@@ -5,9 +5,6 @@ on:
     tags:
       - "v*"
 
-env:
-  IMAGE_NAME: dashaun/${GITHUB_REPOSITORY#*/}
-
 jobs:
   build:
 
@@ -33,7 +30,7 @@ jobs:
         run: ./mvnw -Pnative spring-boot:build-image
       #Deploy the image to the Docker registry
       - name: Push Images to Docker Registry
-        run: docker push -a $IMAGE_NAME
+        run: docker push -a dashaun/com.javagrunt.service.gateway
 
 
   manifest:
