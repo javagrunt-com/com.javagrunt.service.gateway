@@ -1,0 +1,24 @@
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "health, metrics, prometheus, info"
+  zipkin:
+    tracing:
+      endpoint: "${ZIPKIN_ENDPOINT:http://localhost:9411/api/v2/spans}"
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: youtube-listener
+          uri: http://youtube-listener.javagrunt-com.knative.dashaun.cloud
+          predicates:
+            - Path=/youtube-listener/**
+        - id: root
+          uri: https://javagrunt.github.io
+          predicates:
+            - Path=/**

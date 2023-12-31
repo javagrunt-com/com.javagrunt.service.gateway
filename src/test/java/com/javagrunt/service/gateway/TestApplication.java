@@ -8,7 +8,7 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.utility.DockerImageName;
 
 @TestConfiguration(proxyBeanMethods = false)
-public class TestGatewayApplication {
+public class TestApplication {
 
 	@Bean
 	@ServiceConnection(name = "redis")
@@ -16,8 +16,14 @@ public class TestGatewayApplication {
 		return new GenericContainer<>(DockerImageName.parse("redis:latest")).withExposedPorts(6379);
 	}
 
+	@Bean
+	@ServiceConnection(name = "openzipkin/zipkin")
+	GenericContainer<?> zipkinContainer() {
+		return new GenericContainer<>(DockerImageName.parse("openzipkin/zipkin:latest")).withExposedPorts(9411);
+	}
+
 	public static void main(String[] args) {
-		SpringApplication.from(GatewayApplication::main).with(TestGatewayApplication.class).run(args);
+		SpringApplication.from(Application::main).with(TestApplication.class).run(args);
 	}
 
 }
