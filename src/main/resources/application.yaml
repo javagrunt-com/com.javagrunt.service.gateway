@@ -22,3 +22,9 @@ spring:
           uri: https://javagrunt.github.io
           predicates:
             - Path=/**
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      password: ${REDIS_PASSWORD:}
+      port: ${REDIS_PORT:6379}
+      username: ${REDIS_USERNAME:}
