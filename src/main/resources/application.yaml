@@ -18,6 +18,8 @@ spring:
           uri: http://youtube-listener.javagrunt-com.knative.dashaun.cloud
           predicates:
             - Path=/youtube-listener/**
+          filters:
+            - RewritePath=/youtube-listener/(?<segment>.*), /$\{segment}
         - id: root
           uri: https://javagrunt.github.io
           predicates:
