@@ -15,7 +15,7 @@ spring:
     gateway:
       routes:
         - id: youtube-listener
-          uri: http://youtube-listener.javagrunt-com.knative.dashaun.cloud
+          uri: http://youtube-listener.javagrunt-com.svc.cluster.local
           predicates:
             - Path=/youtube-listener/**
           filters:
