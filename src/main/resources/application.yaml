@@ -24,8 +24,6 @@ spring:
           uri: http://openzipkin.javagrunt-com.svc.cluster.local:9411
           predicates:
             - Path=/zipkin/**
-          filters:
-            - RewritePath=/zipkin/(?<segment>.*), /$\{segment}
         - id: root
           uri: https://javagrunt.github.io
           predicates:
