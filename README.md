@@ -5,6 +5,8 @@
  # com.javagrunt.service.gateway
 
  ## Prerequisites
+ 
+ - Java 21
 
  ## Quick Start
 
