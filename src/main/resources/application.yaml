@@ -20,6 +20,12 @@ spring:
             - Path=/youtube-listener/**
           filters:
             - RewritePath=/youtube-listener/(?<segment>.*), /$\{segment}
+        - id: youtube-service
+          uri: http://youtube-service.javagrunt-com.svc.cluster.local
+          predicates:
+            - Path=/youtube-service/**
+          filters:
+            - RewritePath=/youtube-service/(?<segment>.*), /$\{segment}
         - id: zipkin
           uri: http://openzipkin.javagrunt-com.svc.cluster.local:9411
           predicates:
