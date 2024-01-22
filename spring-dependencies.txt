@@ -1,17 +1,21 @@
-[INFO] +- org.springframework.boot:spring-boot-starter-actuator:jar:3.2.1:compile
-[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:3.2.1:compile
-[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:3.2.1:compile
-[INFO] |  +- org.springframework.boot:spring-boot-actuator-autoconfigure:jar:3.2.1:compile
-[INFO] |  |  +- org.springframework.boot:spring-boot-actuator:jar:3.2.1:compile
-[INFO] +- org.springframework.boot:spring-boot-starter-data-redis-reactive:jar:3.2.1:compile
-[INFO] |  \- org.springframework.data:spring-data-redis:jar:3.2.1:compile
-[INFO] |     +- org.springframework.data:spring-data-keyvalue:jar:3.2.1:compile
-[INFO] |     |  \- org.springframework.data:spring-data-commons:jar:3.2.1:compile
-[INFO] |     +- org.springframework:spring-tx:jar:6.1.2:compile
-[INFO] |     |  \- org.springframework:spring-beans:jar:6.1.2:compile
-[INFO] |     +- org.springframework:spring-oxm:jar:6.1.2:compile
-[INFO] |     +- org.springframework:spring-aop:jar:6.1.2:compile
-[INFO] |     +- org.springframework:spring-context-support:jar:6.1.2:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-actuator:jar:3.2.2:compile
+[INFO] |  +- org.springframework.boot:spring-boot-starter:jar:3.2.2:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-logging:jar:3.2.2:compile
+[INFO] |  +- org.springframework.boot:spring-boot-actuator-autoconfigure:jar:3.2.2:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-actuator:jar:3.2.2:compile
+[INFO] |  +- io.micrometer:micrometer-observation:jar:1.12.2:compile
+[INFO] |  |  \- io.micrometer:micrometer-commons:jar:1.12.2:compile
+[INFO] |  \- io.micrometer:micrometer-jakarta9:jar:1.12.2:compile
+[INFO] |     \- io.micrometer:micrometer-core:jar:1.12.2:compile
+[INFO] +- org.springframework.boot:spring-boot-starter-data-redis-reactive:jar:3.2.2:compile
+[INFO] |  \- org.springframework.data:spring-data-redis:jar:3.2.2:compile
+[INFO] |     +- org.springframework.data:spring-data-keyvalue:jar:3.2.2:compile
+[INFO] |     |  \- org.springframework.data:spring-data-commons:jar:3.2.2:compile
+[INFO] |     +- org.springframework:spring-tx:jar:6.1.3:compile
+[INFO] |     |  \- org.springframework:spring-beans:jar:6.1.3:compile
+[INFO] |     +- org.springframework:spring-oxm:jar:6.1.3:compile
+[INFO] |     +- org.springframework:spring-aop:jar:6.1.3:compile
+[INFO] |     +- org.springframework:spring-context-support:jar:6.1.3:compile
 [INFO] +- org.springframework.cloud:spring-cloud-starter-gateway:jar:4.1.0:compile
 [INFO] |  +- org.springframework.cloud:spring-cloud-starter:jar:4.1.0:compile
 [INFO] |  |  +- org.springframework.cloud:spring-cloud-context:jar:4.1.0:compile
@@ -19,23 +23,17 @@
 [INFO] |  |  +- org.springframework.cloud:spring-cloud-commons:jar:4.1.0:compile
 [INFO] |  |  \- org.springframework.security:spring-security-rsa:jar:1.1.1:compile
 [INFO] |  +- org.springframework.cloud:spring-cloud-gateway-server:jar:4.1.0:compile
-[INFO] |  |  +- org.springframework.boot:spring-boot-starter-validation:jar:3.2.1:compile
-[INFO] |  \- org.springframework.boot:spring-boot-starter-webflux:jar:3.2.1:compile
-[INFO] |     +- org.springframework.boot:spring-boot-starter-json:jar:3.2.1:compile
-[INFO] |     +- org.springframework.boot:spring-boot-starter-reactor-netty:jar:3.2.1:compile
-[INFO] |     +- org.springframework:spring-web:jar:6.1.2:compile
-[INFO] |     \- org.springframework:spring-webflux:jar:6.1.2:compile
+[INFO] |  |  +- org.springframework.boot:spring-boot-starter-validation:jar:3.2.2:compile
+[INFO] |  \- org.springframework.boot:spring-boot-starter-webflux:jar:3.2.2:compile
+[INFO] |     +- org.springframework.boot:spring-boot-starter-json:jar:3.2.2:compile
+[INFO] |     +- org.springframework.boot:spring-boot-starter-reactor-netty:jar:3.2.2:compile
+[INFO] |     +- org.springframework:spring-web:jar:6.1.3:compile
+[INFO] |     \- org.springframework:spring-webflux:jar:6.1.3:compile
 [INFO] +- org.springframework.session:spring-session-data-redis:jar:3.2.1:compile
 [INFO] |  \- org.springframework.session:spring-session-core:jar:3.2.1:compile
-[INFO] |     \- org.springframework:spring-jcl:jar:6.1.2:compile
-[INFO] +- org.springframework.boot:spring-boot-devtools:jar:3.2.1:runtime
-[INFO] |  +- org.springframework.boot:spring-boot:jar:3.2.1:compile
-[INFO] |  |  \- org.springframework:spring-context:jar:6.1.2:compile
-[INFO] |  |     \- org.springframework:spring-expression:jar:6.1.2:compile
-[INFO] |  \- org.springframework.boot:spring-boot-autoconfigure:jar:3.2.1:compile
-[INFO] +- org.springframework.boot:spring-boot-starter-test:jar:3.2.1:test
-[INFO] |  +- org.springframework.boot:spring-boot-test:jar:3.2.1:test
-[INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:3.2.1:test
-[INFO] |  +- org.springframework:spring-core:jar:6.1.2:compile
-[INFO] |  +- org.springframework:spring-test:jar:6.1.2:test
-[INFO] +- org.springframework.boot:spring-boot-testcontainers:jar:3.2.1:test
+[INFO] |     \- org.springframework:spring-jcl:jar:6.1.3:compile
+[INFO] \- org.springframework.boot:spring-boot-devtools:jar:3.2.2:runtime
+[INFO]    +- org.springframework.boot:spring-boot:jar:3.2.2:compile
+[INFO]    |  \- org.springframework:spring-context:jar:6.1.3:compile
+[INFO]    |     \- org.springframework:spring-expression:jar:6.1.3:compile
+[INFO]    \- org.springframework.boot:spring-boot-autoconfigure:jar:3.2.2:compile
