@@ -26,7 +26,6 @@ spring:
             - Path=/youtube-service/**
           filters:
             - RewritePath=/youtube-service/(?<segment>.*), /$\{segment}
-            - PreserveHostHeader
         - id: zipkin
           uri: http://openzipkin.javagrunt-com.svc.cluster.local:9411
           predicates:
