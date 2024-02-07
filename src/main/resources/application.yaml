@@ -30,3 +30,14 @@ spring:
       password: ${REDIS_PASSWORD:}
       port: ${REDIS_PORT:6379}
       username: ${REDIS_USERNAME:}
+
+namespace: "dev-javagrunt-com"
+
+hello-service:
+  name: "hello-service"
+youtube-listener:
+  name: "youtube-listener"
+youtube-service:
+  name: "youtube-service"
+root: 
+  uri: "https://javagrunt.github.io"
