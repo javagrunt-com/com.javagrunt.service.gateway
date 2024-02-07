@@ -83,20 +83,17 @@ class RequestCountingFilter implements GatewayFilter, ScalerService {
 
 	@Override
 	public long getMetric(String name, String namespace) {
-		AtomicInteger count = getCount(name, namespace);
-		logger.info("Returning count: " + count.get());
-		return count.get();
+		return getCount(name, namespace).get();
 	}
 
 	@Override
 	public boolean isActive(String name, String namespace) {
-		AtomicInteger count = getCount(name, namespace);
-		logger.info("Returning active: " + (count.get() > 0));
-		return count.get() > 0;
+		return getCount(name, namespace).get() > 0;
 	}
 
 	@Override
 	public void setActive(String name, String namespace, boolean active) {
+		logger.info("Setting active: " + active);
 		AtomicInteger count = getCount(name, namespace);
 		if(count.get() > 0){
 			count.set(0);
@@ -110,6 +107,7 @@ class RequestCountingFilter implements GatewayFilter, ScalerService {
         String name = r.getMetadata().get("name").toString();
 		String namespace = r.getMetadata().get("namespace").toString();
 		AtomicInteger count = getCount(name, namespace);
+		logger.info("Incrementing count");
 		count.incrementAndGet();
 		return this.filter.filter(exchange, chain).doOnError(e -> {
 			if (count.get() > 0) {
