@@ -16,13 +16,13 @@ public class ScalerEndpoint {
 	}
 
 	@ReadOperation
-	public boolean status(String name) {
-		return scaler.isActive(name);
+	public boolean status(String name, String namespace) {
+		return scaler.isActive(name, namespace);
 	}
 
 	@WriteOperation
-	public void toggle(String name) {
-		scaler.setActive(name, !scaler.isActive(name));
+	public void toggle(String name, String namespace) {
+		scaler.setActive(name, namespace, !scaler.isActive(name, namespace));
 	}
 
 }

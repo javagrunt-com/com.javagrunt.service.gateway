@@ -17,14 +17,14 @@ public class GrpcServerService extends ExternalScalerImplBase {
 
 	@Override
 	public void isActive(ScaledObjectRef request, StreamObserver<IsActiveResponse> responseObserver) {
-		responseObserver.onNext(IsActiveResponse.newBuilder().setResult(scaler.isActive(request.getName())).build());
+		responseObserver.onNext(IsActiveResponse.newBuilder().setResult(scaler.isActive(request.getName(), request.getNamespace())).build());
 		responseObserver.onCompleted();
 	}
 
 	@Override
 	@Async
 	public void streamIsActive(ScaledObjectRef request, StreamObserver<IsActiveResponse> responseObserver) {
-		boolean active = scaler.isActive(request.getName());
+		boolean active = scaler.isActive(request.getName(), request.getNamespace());
 		responseObserver.onNext(IsActiveResponse.newBuilder().setResult(active).build());
 		while (true) {
 			try {
@@ -34,7 +34,7 @@ public class GrpcServerService extends ExternalScalerImplBase {
 				responseObserver.onError(e);
 				Thread.currentThread().interrupt();
 			}
-			boolean update = scaler.isActive(request.getName());
+			boolean update = scaler.isActive(request.getName(), request.getNamespace());
 			if (update != active) {
 				active = update;
 				responseObserver.onNext(IsActiveResponse.newBuilder().setResult(active).build());
@@ -58,7 +58,7 @@ public class GrpcServerService extends ExternalScalerImplBase {
 		responseObserver.onNext(GetMetricsResponse.newBuilder()
 			.addMetricValues(MetricValue.newBuilder()
 				.setMetricName("requests")
-				.setMetricValue(scaler.getMetric(request.getScaledObjectRef().getName()))
+				.setMetricValue(scaler.getMetric(request.getScaledObjectRef().getName(), request.getScaledObjectRef().getNamespace()))
 				.build())
 			.build());
 		responseObserver.onCompleted();
