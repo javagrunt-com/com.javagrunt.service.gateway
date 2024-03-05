@@ -30,6 +30,9 @@ spring:
       password: ${REDIS_PASSWORD:}
       port: ${REDIS_PORT:6379}
       username: ${REDIS_USERNAME:}
+  threads:
+    virtual:
+      enabled: true
 
 namespace: "dev-javagrunt-com"
 
