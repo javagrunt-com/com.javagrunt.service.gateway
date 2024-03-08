@@ -24,6 +24,29 @@ management:
 spring:
   application:
     name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: youtube-listener
+          uri: http://youtube-listener.javagrunt-com.svc.cluster.local
+          predicates:
+            - Path=/youtube-listener/**
+          filters:
+            - RewritePath=/youtube-listener/(?<segment>.*), /$\{segment}
+        - id: youtube-service
+          uri: http://youtube-service.javagrunt-com.svc.cluster.local
+          predicates:
+            - Path=/youtube-service/**
+          filters:
+            - RewritePath=/youtube-service/(?<segment>.*), /$\{segment}
+        - id: zipkin
+          uri: http://openzipkin.javagrunt-com.svc.cluster.local:9411
+          predicates:
+            - Path=/zipkin/**
+        - id: root
+          uri: https://javagrunt.github.io
+          predicates:
+            - Path=/**
   data:
     redis:
       host: ${REDIS_HOST:localhost}
