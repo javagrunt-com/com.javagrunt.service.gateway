@@ -1,3 +1,8 @@
+docker-volumes/postgres-storage
+docker-volumes/prometheus-storage
+docker-volumes/grafana-storage
+docker-volumes/tempo-storage
+docker-volumes/redis-storage
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar

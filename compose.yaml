@@ -1,0 +1,71 @@
+services:
+  postgres:
+    container_name: 'postgres'
+    image: 'postgres:latest'
+    environment:
+      - 'POSTGRES_DB=postgres'
+      - 'POSTGRES_PASSWORD=postgres'
+      - 'POSTGRES_USER=postgres'
+    ports:
+      - '5432:5432'
+    volumes:
+      - './docker-volumes/postgres-storage/postgres-data:/var/lib/postgresql/data'
+  grafana:
+    container_name: 'grafana'
+    environment:
+      - 'GF_INSTALL_PLUGINS=redis-app'
+    image: 'grafana/grafana:latest'
+    ports:
+      - '3000:3000'
+    volumes:
+      - './docker-volumes/grafana-storage:/var/lib/grafana'
+  loki:
+    container_name: loki
+    image: grafana/loki:3.0.0 # https://hub.docker.com/r/grafana/loki/tags and https://github.com/grafana/loki/releases
+    command: [ '-config.file=/etc/loki/local-config.yaml' ]
+    ports:
+      - '3100:3100'
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.51.2 # https://hub.docker.com/r/prom/prometheus
+    command:
+      - --enable-feature=exemplar-storage
+      - --web.enable-remote-write-receiver
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - './docker-volumes/prometheus-storage:/prometheus'
+      - './docker-volumes/prometheus-config/prometheus.yml:/etc/prometheus/prometheus.yml:ro'
+    ports:
+      - '9090:9090'
+  rabbitmq:
+    image: 'rabbitmq:3-management'
+    environment:
+      - 'RABBITMQ_DEFAULT_PASS=secret'
+      - 'RABBITMQ_DEFAULT_USER=myuser'
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+  redis:
+    container_name: 'redis'
+    image: 'redis/redis-stack:latest'
+    ports:
+      - '6379:6379'
+      - '8001:8001'
+    volumes:
+      - './docker-volumes/redis-storage/redis-data:/data'
+    environment:
+      - 'REDIS_ARGS=--save 60 1000 --appendonly yes'
+  tempo:
+    container_name: tempo
+    image: grafana/tempo:2.4.1 # https://hub.docker.com/r/grafana/tempo/tags and https://github.com/grafana/tempo/releases
+    command: [ '-config.file=/etc/tempo.yml' ]
+    volumes:
+      - './docker-volumes/tempo-storage:/tmp/tempo'
+      - './docker-volumes/tempo-config/tempo.yml:/etc/tempo.yml:ro'
+    ports:
+      - '3200:3200'    # tempo
+      - '9411:9411'    # zipkin
+networks:
+  javagrunt:
+    external: true
+    name: javagrunt

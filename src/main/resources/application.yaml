@@ -1,3 +1,7 @@
+logging:
+    level:
+        org.springframework.security: trace
+
 management:
   endpoints:
     web:
@@ -27,6 +31,16 @@ spring:
   cloud:
     gateway:
       routes:
+        - id: main
+          uri: https://javagrunt.github.io
+          predicates:
+            - Path=/
+        - id: insights
+          uri: http://localhost:8081
+          predicates:
+            - Path=/insights/**
+          filters:
+            - RewritePath=/insights/(?<segment>.*), /$\{segment}
         - id: youtube-listener
           uri: http://youtube-listener.javagrunt-com.svc.cluster.local
           predicates:
@@ -53,6 +67,8 @@ spring:
       password: ${REDIS_PASSWORD:}
       port: ${REDIS_PORT:6379}
       username: ${REDIS_USERNAME:}
+  main:
+    web-application-type: reactive
   threads:
     virtual:
       enabled: true

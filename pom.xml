@@ -14,11 +14,6 @@
   <name>${project.groupId}.${project.artifactId}</name>
   <properties>
     <java.version>21</java.version>
-    <os.detected.arch>null</os.detected.arch>
-    <project.artifactId>null</project.artifactId>
-    <project.groupId>null</project.groupId>
-    <project.name>null</project.name>
-    <project.version>null</project.version>
     <spring-cloud.version>2023.0.1</spring-cloud.version>
   </properties>
   <dependencyManagement>
@@ -46,6 +41,14 @@
       <groupId>io.zipkin.reporter2</groupId>
       <artifactId>zipkin-reporter-brave</artifactId>
     </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-oauth2-client</artifactId>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework.boot</groupId>-->
+<!--      <artifactId>spring-boot-starter-security</artifactId>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
@@ -84,6 +87,18 @@
       <groupId>org.testcontainers</groupId>
       <artifactId>junit-jupiter</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.session</groupId>
+      <artifactId>spring-session-data-redis</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
     </dependency>
   </dependencies>
   <build>
